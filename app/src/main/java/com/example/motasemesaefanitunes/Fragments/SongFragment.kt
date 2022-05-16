@@ -25,7 +25,13 @@ class SongFragment : Fragment() {
 
     lateinit var rvUserList: RecyclerView
     lateinit var musicAdapter: MusicAdapter
+<<<<<<< HEAD
     private lateinit var layoutManager: RecyclerView.LayoutManager
+=======
+  //  private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var layoutManager: RecyclerView.LayoutManager
+
+>>>>>>> origin/main
     companion object {
 
         const val MUSIC_KEY = "MUSIC_TYPE"
@@ -39,17 +45,38 @@ class SongFragment : Fragment() {
         }
 
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/main
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+<<<<<<< HEAD
         println("CREATING SONG FRAGMENT")
         val view = inflater.inflate(R.layout.fragment_recyclev, container, false)
         rvUserList = view.findViewById((R.id.recycle_song_list))
         layoutManager = LinearLayoutManager(view?.context, LinearLayoutManager.VERTICAL, false)
         val musicType = arguments?.getInt(MUSIC_KEY)
        switchMusicType(musicType)
+=======
+
+        println("CREATING SONG FRAGMENT")
+        val view = inflater.inflate(R.layout.fragment_recyclev, container, false)
+
+        rvUserList = view.findViewById((R.id.recycle_song_list))
+        layoutManager = LinearLayoutManager(view?.context, LinearLayoutManager.VERTICAL, false)
+      // swipeRefreshLayout = view.findViewById(R.id.swipeRefreshLayout)
+        val musicType = arguments?.getInt(MUSIC_KEY)
+       switchMusicType(musicType)
+       // swipeRefreshLayout.setOnRefreshListener{
+        //   swipeRefreshLayout.isRefreshing = true
+      //      switchMusicType(musicType)
+      //  }
+>>>>>>> origin/main
         return view
     }
 
@@ -65,13 +92,25 @@ class SongFragment : Fragment() {
             startRetrofit(callSongRes)
         }
     }
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> origin/main
     private fun startRetrofit(something: Call<ItunesResponses>) {
         something.enqueue(object : Callback<ItunesResponses> {
             override fun onResponse(
                 call: Call<ItunesResponses>,
                 response: Response<ItunesResponses>
             ) {
+<<<<<<< HEAD
                 if (response.isSuccessful) {
+=======
+
+                if (response.isSuccessful) {
+                  //  swipeRefreshLayout.isRefreshing = false
+
+>>>>>>> origin/main
                     musicAdapter = MusicAdapter(response.body()!!.results)
                     rvUserList.adapter = musicAdapter;
                     rvUserList.layoutManager = layoutManager;
@@ -79,9 +118,21 @@ class SongFragment : Fragment() {
             }
 
             override fun onFailure(call: Call<ItunesResponses>, t: Throwable) {
+<<<<<<< HEAD
+=======
+           //    swipeRefreshLayout.isRefreshing = false
+
+>>>>>>> origin/main
                 Toast.makeText(activity, t.message, Toast.LENGTH_LONG).show()
             }
 
         })
     }
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> origin/main
 }
